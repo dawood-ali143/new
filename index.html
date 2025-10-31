@@ -55,52 +55,60 @@
       color: #38bdf8;
     }
 
-    .content ul {
-      list-style: none;
-      margin-bottom: 2rem;
+    .content-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(30, 41, 59, 0.3);
+      border-radius: 12px;
+      border-left: 4px solid #38bdf8;
     }
 
-    .content li {
-      margin-bottom: 0.5rem;
-      color: #cbd5e1;
-    }
-
-    .content .highlight {
-      font-weight: bold;
-      color: #7dd3fc;
-    }
-
-    .project-section {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .project-section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #38bdf8;
-    }
-
-    .project-section h4 {
-      font-size: 1.2rem;
+    .content-section h3 {
+      font-size: 1.4rem;
       margin-bottom: 1rem;
       color: #7dd3fc;
     }
 
-    /* 3D Carousel container */
+    .content-section p {
+      margin-bottom: 0.5rem;
+      color: #cbd5e1;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #7dd3fc;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin: 0.2rem;
+      display: inline-block;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      margin: 2rem 0;
+    }
+
+    /* 3D Carousel container - Book style */
     .carousel-container {
       width: 50%;
       height: 80vh;
       position: relative;
       z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .carousel {
       width: 100%;
       height: 100%;
-      perspective: 1200px;
+      perspective: 1400px;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .carousel__track {
@@ -108,23 +116,25 @@
       height: 100%;
       position: absolute;
       transform-style: preserve-3d;
-      animation: rotate 30s linear infinite;
+      animation: rotate 35s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .carousel__item {
       position: absolute;
-      width: 280px;
-      height: 380px;
-      left: 50%;
-      top: 50%;
-      margin-left: -140px;
-      margin-top: -190px;
-      transform-origin: center center -450px;
-      border-radius: 16px;
+      width: 220px;
+      height: 300px;
+      transform-origin: center center -320px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
       transition: all 0.5s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .carousel__item img {
@@ -135,12 +145,15 @@
     }
 
     .carousel__item:hover {
-      transform: scale(1.08) translateZ(50px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transform: scale(1.05) translateZ(30px);
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(56, 189, 248, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .carousel__item:hover img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     /* Diagonal moving tapes */
@@ -158,30 +171,30 @@
     .tape {
       position: absolute;
       display: flex;
-      opacity: 0.15;
-      filter: brightness(0.6);
+      opacity: 0.12;
+      filter: brightness(0.5);
     }
 
     .tape-1 {
-      top: -100px;
-      left: -200px;
-      transform: rotate(15deg);
-      animation: slideDiagonal1 40s linear infinite;
+      top: -80px;
+      left: -150px;
+      transform: rotate(12deg);
+      animation: slideDiagonal1 45s linear infinite;
     }
 
     .tape-2 {
-      bottom: -100px;
-      right: -200px;
-      transform: rotate(-15deg);
-      animation: slideDiagonal2 35s linear infinite;
+      bottom: -80px;
+      right: -150px;
+      transform: rotate(-12deg);
+      animation: slideDiagonal2 40s linear infinite;
     }
 
     .tape img {
-      width: 120px;
-      height: 80px;
+      width: 90px;
+      height: 60px;
       object-fit: cover;
-      margin-right: 10px;
-      border-radius: 6px;
+      margin-right: 8px;
+      border-radius: 4px;
     }
 
     @keyframes rotate {
@@ -195,19 +208,19 @@
 
     @keyframes slideDiagonal1 {
       from {
-        transform: translateX(-100%) rotate(15deg);
+        transform: translateX(-100%) rotate(12deg);
       }
       to {
-        transform: translateX(100%) rotate(15deg);
+        transform: translateX(100%) rotate(12deg);
       }
     }
 
     @keyframes slideDiagonal2 {
       from {
-        transform: translateX(100%) rotate(-15deg);
+        transform: translateX(100%) rotate(-12deg);
       }
       to {
-        transform: translateX(-100%) rotate(-15deg);
+        transform: translateX(-100%) rotate(-12deg);
       }
     }
 
@@ -223,10 +236,9 @@
       }
       
       .carousel__item {
-        width: 240px;
-        height: 320px;
-        margin-left: -120px;
-        margin-top: -160px;
+        width: 200px;
+        height: 270px;
+        transform-origin: center center -280px;
       }
     }
 
@@ -247,14 +259,13 @@
       
       .carousel-container {
         width: 100%;
-        height: 60vh;
+        height: 50vh;
       }
       
       .carousel__item {
-        width: 200px;
-        height: 280px;
-        margin-left: -100px;
-        margin-top: -140px;
+        width: 160px;
+        height: 220px;
+        transform-origin: center center -220px;
       }
       
       .tape {
@@ -272,10 +283,9 @@
       }
       
       .carousel__item {
-        width: 160px;
-        height: 220px;
-        margin-left: -80px;
-        margin-top: -110px;
+        width: 140px;
+        height: 190px;
+        transform-origin: center center -180px;
       }
     }
   </style>
@@ -314,28 +324,33 @@
   </div>
 
   <div class="content">
-    <h1>3D Graphics & Mesh Topology</h1>
+    <h1>Topology</h1>
     <p>
       Based on 3D graphics research I conducted at Derispharmaceutical Group, Sirona focusing on mesh topology. I discovered a potential way to use KD-trees in a creative side project. This project allowed me to explore new graphics and shader techniques that had been learning over the past few months.
     </p>
     
-    <h2>Explore Project</h2>
-    <ul>
-      <li><span class="highlight">TECHNICAL GUIDE</span></li>
-      <li><span class="highlight">PROJECT END</span></li>
-    </ul>
+    <div class="divider"></div>
 
-    <div class="project-section">
-      <h3>Samkalp 2025</h3>
-      <h4>TECH GALLERY</h4>
-      <h4>POSTER PRESENTATION</h4>
-      <ul>
-        <li><span class="highlight">INNOVATION • CREATION • DISPLAY</span></li>
-      </ul>
+    <div class="content-section">
+      <h2>Explore Project</h2>
+      <p><span class="highlight">TECHNICAL GUIDE</span> <span class="highlight">PROJECT END</span></p>
     </div>
 
-    <div class="project-section">
-      <h4>CICLBANK J078</h4>
+    <div class="content-section">
+      <h3>Samkalp 2025</h3>
+      <p><span class="highlight">TECH GALLERY</span></p>
+      <p><span class="highlight">POSTER PRESENTATION</span></p>
+      <p><span class="highlight">INNOVATION - CREATION - DISPLAY</span></p>
+    </div>
+
+    <div class="content-section">
+      <p><span class="highlight">TECH CALL</span> <span class="highlight">TECHNICAL QUIZ</span></p>
+    </div>
+
+    <div class="content-section">
+      <h3>SANKALP 2025 HOTTY</h3>
+      <p><span class="highlight">TECH GALLERY</span></p>
+      <p><span class="highlight">CHALLENGE</span></p>
     </div>
   </div>
 
@@ -356,7 +371,7 @@
     // JS to position carousel items in 3D circle
     const items = document.querySelectorAll(".carousel__item");
     const total = items.length;
-    const radius = 450;
+    const radius = 320;
 
     items.forEach((item, i) => {
       const angle = (i / total) * 360;
