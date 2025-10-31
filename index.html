@@ -20,12 +20,13 @@
       color: white;
       font-family: "Poppins", sans-serif;
       overflow: hidden;
+      padding: 0 5%;
     }
 
     /* Left content area */
     .content {
       width: 40%;
-      padding: 4rem;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -34,40 +35,43 @@
 
     .content h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: #38bdf8;
+      font-weight: 700;
     }
 
     .content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 2.5rem;
     }
 
     .content button {
       background: #38bdf8;
       border: none;
       color: #0f172a;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       border-radius: 0.5rem;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
       width: fit-content;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
     }
 
     .content button:hover {
-      transform: scale(1.05);
+      transform: translateY(-3px);
       background: #7dd3fc;
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
     }
 
     /* 3D Carousel container */
     .carousel {
-      width: 50%;
+      width: 55%;
       height: 80vh;
-      perspective: 1000px;
+      perspective: 1200px;
       position: relative;
     }
 
@@ -76,30 +80,39 @@
       height: 100%;
       position: absolute;
       transform-style: preserve-3d;
-      animation: rotate 25s linear infinite;
+      animation: rotate 30s linear infinite;
     }
 
     .carousel__item {
       position: absolute;
-      width: 260px;
-      height: 180px;
+      width: 300px;
+      height: 400px;
       left: 50%;
       top: 50%;
+      margin-left: -150px;
+      margin-top: -200px;
       transform-origin: center center -500px;
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      transition: all 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .carousel__item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
     .carousel__item:hover {
-      transform: scale(1.1) translateZ(20px);
+      transform: scale(1.08) translateZ(50px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .carousel__item:hover img {
+      transform: scale(1.05);
     }
 
     /* Infinite background tape */
@@ -108,18 +121,20 @@
       bottom: 0;
       left: 0;
       width: 200%;
-      height: 150px;
+      height: 120px;
       display: flex;
-      animation: slide 20s linear infinite;
-      opacity: 0.25;
+      animation: slide 25s linear infinite;
+      opacity: 0.3;
+      filter: brightness(0.7);
     }
 
     .tape img {
-      width: 200px;
-      height: 150px;
+      width: 180px;
+      height: 120px;
       object-fit: cover;
-      margin-right: 10px;
-      border-radius: 10px;
+      margin-right: 15px;
+      border-radius: 8px;
+      opacity: 0.8;
     }
 
     @keyframes rotate {
@@ -140,52 +155,111 @@
       }
     }
 
+    /* Pause animation on hover */
+    .carousel:hover .carousel__track {
+      animation-play-state: paused;
+    }
+
     /* Responsiveness */
+    @media (max-width: 1100px) {
+      .content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .carousel__item {
+        width: 260px;
+        height: 350px;
+        margin-left: -130px;
+        margin-top: -175px;
+      }
+    }
+
     @media (max-width: 900px) {
       body {
         flex-direction: column;
         text-align: center;
+        padding: 2rem 5%;
+        height: auto;
+        min-height: 100vh;
       }
+      
       .content {
-        width: 90%;
-        padding: 2rem;
+        width: 100%;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
       }
+      
       .carousel {
         width: 100%;
         height: 60vh;
+      }
+      
+      .carousel__item {
+        width: 220px;
+        height: 300px;
+        margin-left: -110px;
+        margin-top: -150px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .content p {
+        font-size: 1rem;
+      }
+      
+      .carousel__item {
+        width: 180px;
+        height: 250px;
+        margin-left: -90px;
+        margin-top: -125px;
+      }
+      
+      .tape {
+        height: 80px;
+      }
+      
+      .tape img {
+        width: 120px;
+        height: 80px;
       }
     }
   </style>
 </head>
 <body>
   <div class="content">
-    <h1>Welcome to the Image Showcase</h1>
+    <h1>3D Graphics & Mesh Topology</h1>
     <p>
-      Experience a stunning 3D rotating gallery where each card floats smoothly
-      through space. Built with just HTML, CSS, and JavaScript — no frameworks,
-      no dependencies.
+      Based on 3D graphics research I conducted at Dentsply Sirona focusing on mesh topology, 
+      I discovered a potential way to use KD-trees in a creative side project. This project 
+      allowed me to explore new graphics and shader techniques I had been learning over the 
+      past few months.
     </p>
-    <button>Explore More</button>
+    <button>Explore Project</button>
   </div>
 
   <div class="carousel">
     <div class="carousel__track" id="carouselTrack">
-      <div class="carousel__item"><img src="img11.jpg" alt="Image 11" /></div>
-      <div class="carousel__item"><img src="img12.jpg" alt="Image 12" /></div>
-      <div class="carousel__item"><img src="img13.jpg" alt="Image 13" /></div>
-      <div class="carousel__item"><img src="img14.jpg" alt="Image 14" /></div>
-    </div>
+      <div class="carousel__item"><img src="img11.png" alt="3D Visualization" /></div>
+      <div class="carousel__item"><img src="img12.png" alt="Mesh Topology" /></div>
+      <div class="carousel__item"><img src="img13.png" alt="KD-Tree Structure" /></div>
+      <div class="carousel__item"><img src="img14.png" alt="Shader Techniques" /></div>
+      <div class="carousel__item"><img src="img11.png" alt="Procedural Generation" /></div>
+      <div class="carousel__item"><img src="img12.png alt="Procedural Generation" /></div>
 
     <!-- moving background strip -->
     <div class="tape" id="tape">
       <img src="img11.png" />
       <img src="img12.png" />
       <img src="img13.png" />
-      <img src="img14.png" />
-      <img src="img11.png" />
-      <img src="img12.png" />
-      <img src="img13.png" />
-      <img src="img14.png" />
+      <img src="img14.png "/>
+      <img src="img11.png"/>
+      <img src="img12.png"/>
+      <img src="img13.png"/>
+      <img src="img14.png"/>
     </div>
   </div>
 
@@ -198,6 +272,18 @@
     items.forEach((item, i) => {
       const angle = (i / total) * 360;
       item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+    });
+
+    // Pause animation when hovering over carousel
+    const carousel = document.querySelector('.carousel');
+    const track = document.querySelector('.carousel__track');
+    
+    carousel.addEventListener('mouseenter', () => {
+      track.style.animationPlayState = 'paused';
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+      track.style.animationPlayState = 'running';
     });
   </script>
 </body>
